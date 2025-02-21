@@ -6,14 +6,14 @@ import 'package:permission_handler/permission_handler.dart';
 
 String nama = 'Nama Pembuat';
 
-class BuktitfPage extends StatefulWidget {
-  const BuktitfPage({super.key});
+class FormatPage extends StatefulWidget {
+  const FormatPage({super.key});
 
   @override
-  State<BuktitfPage> createState() => _BuktitfPageState();
+  State<FormatPage> createState() => _FormatPageState();
 }
 
-class _BuktitfPageState extends State<BuktitfPage> {
+class _FormatPageState extends State<FormatPage> {
   BlueThermalPrinter bluetooth = BlueThermalPrinter.instance;
   String formatToday = DateFormat("dd-MM-yyyy").format(DateTime.now());
   // Fungsi untuk memformat angka ke format Rupiah
