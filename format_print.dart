@@ -7,18 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 String nama = 'Nama Pembuat';
 
 class BuktitfPage extends StatefulWidget {
-  final int saldoBaru;
-  final int totalTrfBaru;
-  final String noRekTujuan;
-  final String namaPenerima;
-  final String keterangan;
-  const BuktitfPage(
-      {super.key,
-      required this.saldoBaru,
-      required this.totalTrfBaru,
-      required this.noRekTujuan,
-      required this.namaPenerima,
-      required this.keterangan});
+  const BuktitfPage({super.key});
 
   @override
   State<BuktitfPage> createState() => _BuktitfPageState();
@@ -78,38 +67,15 @@ class _BuktitfPageState extends State<BuktitfPage> {
     String formatToday = DateFormat("dd-MM-yyyy").format(DateTime.now());
     int baris1 = totalKolom - ('Tanggal Transaksi'.length + formatToday.length);
     int baris2 = totalKolom - ('Jenis Transaksi'.length + 'Transfer'.length);
-    int baris3 =
-        totalKolom - ('Nama Pengirim'.length + '${nama.split(' ')[0]}'.length);
-    int baris4 = totalKolom -
-        ('Nama Penerima'.length + '${widget.namaPnrm.split(' ')[0]}'.length);
-    int baris5 =
-        totalKolom - ('No. Rek Tujuan'.length + '${widget.noRekTujuan}'.length);
-    int baris6 = totalKolom -
-        ('Nominal Transfer'.length +
-            '${formatRupiah(widget.totalTrfBaru)}'.length);
-    int baris7 = totalKolom - ('Berita'.length + '${widget.keterangan}'.length);
-
+    
     String format1 = 'Tanggal Transaksi' + ' ' * baris1 + formatToday;
     String format2 = 'Jenis Transaksi' + ' ' * baris2 + 'Transfer';
-    String format3 = 'Nama Pengirim' + ' ' * baris3 + '${nama.split(' ')[0]}';
-    String format4 =
-        'Nama Penerima' + ' ' * baris4 + '${widget.namaPnrm.split(' ')[0]}';
-    String format5 = 'No. Rek Tujuan' + ' ' * baris5 + '${widget.noRekTujuan}';
-    String format6 = 'Nominal Transfer' +
-        ' ' * baris6 +
-        '${formatRupiah(widget.totalTrfBaru)}';
-    String format7 = 'Berita' + ' ' * baris7 + '${widget.keterangan}';
-
+    
     if (await bluetooth.isConnected ?? false) {
       bluetooth.printCustom("Nama Bank", 3, 1);
       bluetooth.printNewLine();
       bluetooth.printCustom(format1, 1, 0);
       bluetooth.printCustom(format2, 1, 0);
-      bluetooth.printCustom(format3, 1, 0);
-      bluetooth.printCustom(format4, 1, 0);
-      bluetooth.printCustom(format5, 1, 0);
-      bluetooth.printCustom(format6, 1, 0);
-      bluetooth.printCustom(format7, 1, 0);
       bluetooth.printNewLine();
       bluetooth.printCustom("Dibuat oleh ...", 1, 1);
       bluetooth.printNewLine();
@@ -133,20 +99,8 @@ class _BuktitfPageState extends State<BuktitfPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '123456789',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  Text(
-                    'Hi, $nama',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
+                  Text('123456789',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),),
+                  Text('Hi, $nama',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),),
                 ],
               ),
             ),
@@ -161,17 +115,9 @@ class _BuktitfPageState extends State<BuktitfPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        'Transfer Berhasil!',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
+                      Text('Transfer Berhasil!',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                       SizedBox(height: 16),
-                      Icon(
-                        Icons.check_circle,
-                        size: 50,
-                        color: Colors.green,
-                      ),
+                      Icon(Icons.check_circle,size: 50,color: Colors.green,),
                       SizedBox(height: 16),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -179,107 +125,27 @@ class _BuktitfPageState extends State<BuktitfPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Tanggal Transaksi',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '$formatToday',
-                                style: TextStyle(fontSize: 18),
-                              )
+                              Text('Tanggal Transaksi',style: TextStyle(fontSize: 18),),
+                              Text('$formatToday',style: TextStyle(fontSize: 18),),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Jenis Transaksi',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                'Transfer',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Nama Pengirim',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '${nama.split(' ')[0]}',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Nama Penerima',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '${widget.namaPnrm.split(' ')[0]}',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'No. Rekening Tujuan',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '${widget.noRekTujuan}',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Nominal Transfer',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '${formatRupiah(widget.totalTrfBaru)}',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Berita',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Text(
-                                '${widget.keterangan}',
-                                style: TextStyle(fontSize: 18),
-                              )
+                              Text('Jenis Transaksi',style: TextStyle(fontSize: 18),),
+                              Text('Transfer',style: TextStyle(fontSize: 18),),
                             ],
                           ),
                         ],
                       ),
                       SizedBox(height: 32),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                        ),
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,),
                         onPressed: () {
                           printReceipt();
                           Navigator.pop(context, widget.saldoBaru);
                         },
-                        child: Text('Cetak dan Kembali',
-                            style: TextStyle(color: Colors.white)),
+                        child: Text('Cetak dan Kembali',style: TextStyle(color: Colors.white)),
                       ),
                     ],
                   ),
@@ -297,10 +163,7 @@ class _BuktitfPageState extends State<BuktitfPage> {
               children: [
                 Text(
                   '$nama',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),
                 ),
               ],
             ),
