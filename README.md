@@ -1,1 +1,2 @@
-Halaman Pengaturan yang berfungsi untuk menampilkan beberapa perangkat bluetooth sekitar yang bisa dihubungkan. Terdapat beberapa fungsi-fungsi didalamnya
+- Halaman Pengaturan : yang berfungsi untuk menampilkan beberapa perangkat bluetooth sekitar yang bisa dihubungkan (printer thermal bluetootj). Terdapat beberapa fungsi-fungsi didalamnya.
+- Halaman Format Print : yang berfungsi untuk mengatur tampilan ketika akan mencetak hasil sesuai kebutuhan, menggunakan printer thermal seri 80mm.
